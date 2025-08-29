@@ -1,0 +1,138 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="ER-диаграмма: База данных учета сотрудников (на основе реальных данных)">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- EMPLOYEES (Центральная таблица) -->
+        <mxCell id="employees" value="&lt;div style=&quot;background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; font-weight: bold; font-size: 16px; padding: 6px; border-radius: 8px 8px 0 0;&quot;&gt;👥 employees&lt;/div&gt;&lt;div style=&quot;color: white; font-size: 12px; padding: 2px; background: #5a67d8;&quot;&gt;Сотрудники (29 записей)&lt;/div&gt;&lt;hr style=&quot;border-color: white; margin: 0;&quot;&gt;&lt;div style=&quot;text-align: left; padding: 10px; font-family: 'Courier New'; background: #4c51bf;&quot;&gt;&lt;div style=&quot;color: #ffd700; font-weight: bold; margin: 3px 0; font-size: 13px;&quot;&gt;🔑 PK employee_id : SERIAL&lt;/div&gt;&lt;div style=&quot;color: white; margin: 3px 0;&quot;&gt;full_name : VARCHAR(255) NOT NULL&lt;/div&gt;&lt;div style=&quot;color: white; margin: 3px 0;&quot;&gt;hire_date : DATE NOT NULL&lt;/div&gt;&lt;div style=&quot;color: #87ceeb; font-weight: bold; margin: 3px 0;&quot;&gt;🔗 FK job_title_id : INTEGER&lt;/div&gt;&lt;div style=&quot;color: #87ceeb; font-weight: bold; margin: 3px 0;&quot;&gt;🔗 FK department_id : INTEGER&lt;/div&gt;&lt;div style=&quot;color: #87ceeb; font-weight: bold; margin: 3px 0;&quot;&gt;🔗 FK branch_id : INTEGER&lt;/div&gt;&lt;div style=&quot;color: #ddd; margin: 3px 0;&quot;&gt;created_at : TIMESTAMP DEFAULT NOW()&lt;/div&gt;&lt;div style=&quot;color: #ddd; margin: 3px 0;&quot;&gt;updated_at : TIMESTAMP DEFAULT NOW()&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;whiteSpace=wrap;html=1;shadow=1;strokeColor=#4338ca;strokeWidth=4;fillColor=#4c51bf;align=center;spacingTop=0;" vertex="1" parent="1">
+          <mxGeometry x="650" y="350" width="350" height="220" as="geometry"/>
+        </mxCell>
+
+        <!-- JOB_TITLES -->
+        <mxCell id="job_titles" value="&lt;div style=&quot;background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: white; font-weight: bold; font-size: 16px; padding: 6px; border-radius: 8px 8px 0 0;&quot;&gt;💼 job_titles&lt;/div&gt;&lt;div style=&quot;color: white; font-size: 12px; padding: 2px; background: #3182ce;&quot;&gt;Должности (15 записей)&lt;/div&gt;&lt;hr style=&quot;border-color: white; margin: 0;&quot;&gt;&lt;div style=&quot;text-align: left; padding: 10px; font-family: 'Courier New'; background: #2b6cb0;&quot;&gt;&lt;div style=&quot;color: #ffd700; font-weight: bold; margin: 3px 0; font-size: 13px;&quot;&gt;🔑 PK job_title_id : SERIAL&lt;/div&gt;&lt;div style=&quot;color: white; margin: 3px 0;&quot;&gt;name : VARCHAR(100) UNIQUE NOT NULL&lt;/div&gt;&lt;div style=&quot;color: #ddd; margin: 3px 0; font-size: 11px;&quot;&gt;-- ведущий QA инженер, разработчик и др.&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;whiteSpace=wrap;html=1;shadow=1;strokeColor=#2b6cb0;strokeWidth=3;fillColor=#3182ce;align=center;spacingTop=0;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="180" width="320" height="140" as="geometry"/>
+        </mxCell>
+
+        <!-- DEPARTMENT_TYPES -->
+        <mxCell id="department_types" value="&lt;div style=&quot;background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%); color: white; font-weight: bold; font-size: 16px; padding: 6px; border-radius: 8px 8px 0 0;&quot;&gt;🏢 department_types&lt;/div&gt;&lt;div style=&quot;color: white; font-size: 12px; padding: 2px; background: #9333ea;&quot;&gt;Типы подразделений (3 записи)&lt;/div&gt;&lt;hr style=&quot;border-color: white; margin: 0;&quot;&gt;&lt;div style=&quot;text-align: left; padding: 10px; font-family: 'Courier New'; background: #7c3aed;&quot;&gt;&lt;div style=&quot;color: #ffd700; font-weight: bold; margin: 3px 0; font-size: 13px;&quot;&gt;🔑 PK department_type_id : SERIAL&lt;/div&gt;&lt;div style=&quot;color: white; margin: 3px 0;&quot;&gt;name : VARCHAR(50) UNIQUE NOT NULL&lt;/div&gt;&lt;div style=&quot;color: #ddd; margin: 3px 0; font-size: 11px;&quot;&gt;-- Отдел, Группа, Департамент&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;whiteSpace=wrap;html=1;shadow=1;strokeColor=#7c3aed;strokeWidth=3;fillColor=#9333ea;align=center;spacingTop=0;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="360" width="320" height="140" as="geometry"/>
+        </mxCell>
+
+        <!-- DEPARTMENTS -->
+        <mxCell id="departments" value="&lt;div style=&quot;background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%); color: white; font-weight: bold; font-size: 16px; padding: 6px; border-radius: 8px 8px 0 0;&quot;&gt;🏛️ departments&lt;/div&gt;&lt;div style=&quot;color: white; font-size: 12px; padding: 2px; background: #7c3aed;&quot;&gt;Подразделения (16 записей)&lt;/div&gt;&lt;hr style=&quot;border-color: white; margin: 0;&quot;&gt;&lt;div style=&quot;text-align: left; padding: 10px; font-family: 'Courier New'; background: #6d28d9;&quot;&gt;&lt;div style=&quot;color: #ffd700; font-weight: bold; margin: 3px 0; font-size: 13px;&quot;&gt;🔑 PK department_id : SERIAL&lt;/div&gt;&lt;div style=&quot;color: white; margin: 3px 0;&quot;&gt;name : VARCHAR(150) UNIQUE NOT NULL&lt;/div&gt;&lt;div style=&quot;color: #87ceeb; font-weight: bold; margin: 3px 0;&quot;&gt;🔗 FK department_type_id : INTEGER&lt;/div&gt;&lt;div style=&quot;color: #ddd; margin: 3px 0; font-size: 11px;&quot;&gt;-- Центр компетенций QA, Группа CRM и др.&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;whiteSpace=wrap;html=1;shadow=1;strokeColor=#6d28d9;strokeWidth=3;fillColor=#7c3aed;align=center;spacingTop=0;" vertex="1" parent="1">
+          <mxGeometry x="650" y="640" width="350" height="160" as="geometry"/>
+        </mxCell>
+
+        <!-- BRANCHES -->
+        <mxCell id="branches" value="&lt;div style=&quot;background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; font-weight: bold; font-size: 16px; padding: 6px; border-radius: 8px 8px 0 0;&quot;&gt;🏪 branches&lt;/div&gt;&lt;div style=&quot;color: white; font-size: 12px; padding: 2px; background: #059669;&quot;&gt;Филиалы (3 записи)&lt;/div&gt;&lt;hr style=&quot;border-color: white; margin: 0;&quot;&gt;&lt;div style=&quot;text-align: left; padding: 10px; font-family: 'Courier New'; background: #047857;&quot;&gt;&lt;div style=&quot;color: #ffd700; font-weight: bold; margin: 3px 0; font-size: 13px;&quot;&gt;🔑 PK branch_id : SERIAL&lt;/div&gt;&lt;div style=&quot;color: white; margin: 3px 0;&quot;&gt;address : TEXT NOT NULL&lt;/div&gt;&lt;div style=&quot;color: white; margin: 3px 0;&quot;&gt;phone : VARCHAR(20)&lt;/div&gt;&lt;div style=&quot;color: white; margin: 3px 0;&quot;&gt;city : VARCHAR(100)&lt;/div&gt;&lt;div style=&quot;color: #ddd; margin: 3px 0; font-size: 11px;&quot;&gt;-- Владивосток, Краснодар, Ростов-на-Дону&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;whiteSpace=wrap;html=1;shadow=1;strokeColor=#047857;strokeWidth=3;fillColor=#059669;align=center;spacingTop=0;" vertex="1" parent="1">
+          <mxGeometry x="240" y="350" width="320" height="170" as="geometry"/>
+        </mxCell>
+
+        <!-- PROJECTS -->
+        <mxCell id="projects" value="&lt;div style=&quot;background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: white; font-weight: bold; font-size: 16px; padding: 6px; border-radius: 8px 8px 0 0;&quot;&gt;📋 projects&lt;/div&gt;&lt;div style=&quot;color: white; font-size: 12px; padding: 2px; background: #d97706;&quot;&gt;Проекты (28 записей)&lt;/div&gt;&lt;hr style=&quot;border-color: white; margin: 0;&quot;&gt;&lt;div style=&quot;text-align: left; padding: 10px; font-family: 'Courier New'; background: #b45309;&quot;&gt;&lt;div style=&quot;color: #ffd700; font-weight: bold; margin: 3px 0; font-size: 13px;&quot;&gt;🔑 PK project_id : SERIAL&lt;/div&gt;&lt;div style=&quot;color: white; margin: 3px 0;&quot;&gt;name : VARCHAR(200) UNIQUE NOT NULL&lt;/div&gt;&lt;div style=&quot;color: white; margin: 3px 0;&quot;&gt;description : TEXT&lt;/div&gt;&lt;div style=&quot;color: white; margin: 3px 0;&quot;&gt;start_date : DATE&lt;/div&gt;&lt;div style=&quot;color: white; margin: 3px 0;&quot;&gt;end_date : DATE&lt;/div&gt;&lt;div style=&quot;color: white; margin: 3px 0;&quot;&gt;status : VARCHAR(50) DEFAULT 'активный'&lt;/div&gt;&lt;div style=&quot;color: #ddd; margin: 3px 0; font-size: 11px;&quot;&gt;-- Газпромбанк, Ростелеком, Итэлма и др.&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;whiteSpace=wrap;html=1;shadow=1;strokeColor=#b45309;strokeWidth=3;fillColor=#d97706;align=center;spacingTop=0;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="540" width="320" height="200" as="geometry"/>
+        </mxCell>
+
+        <!-- SALARIES -->
+        <mxCell id="salaries" value="&lt;div style=&quot;background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%); color: white; font-weight: bold; font-size: 16px; padding: 6px; border-radius: 8px 8px 0 0;&quot;&gt;💰 salaries&lt;/div&gt;&lt;div style=&quot;color: white; font-size: 12px; padding: 2px; background: #b91c1c;&quot;&gt;История окладов (29+ записей)&lt;/div&gt;&lt;hr style=&quot;border-color: white; margin: 0;&quot;&gt;&lt;div style=&quot;text-align: left; padding: 10px; font-family: 'Courier New'; background: #991b1b;&quot;&gt;&lt;div style=&quot;color: #ffd700; font-weight: bold; margin: 3px 0; font-size: 13px;&quot;&gt;🔑 PK salary_id : SERIAL&lt;/div&gt;&lt;div style=&quot;color: #87ceeb; font-weight: bold; margin: 3px 0;&quot;&gt;🔗 FK employee_id : INTEGER&lt;/div&gt;&lt;div style=&quot;color: white; margin: 3px 0;&quot;&gt;amount : NUMERIC(12,2) NOT NULL&lt;/div&gt;&lt;div style=&quot;color: white; margin: 3px 0;&quot;&gt;valid_from : DATE NOT NULL&lt;/div&gt;&lt;div style=&quot;color: white; margin: 3px 0;&quot;&gt;valid_to : DATE&lt;/div&gt;&lt;div style=&quot;color: white; margin: 3px 0;&quot;&gt;currency : VARCHAR(3) DEFAULT 'RUB'&lt;/div&gt;&lt;div style=&quot;color: #ddd; margin: 3px 0; font-size: 11px;&quot;&gt;-- От 12,130 до 103,333 руб.&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;whiteSpace=wrap;html=1;shadow=1;strokeColor=#991b1b;strokeWidth=3;fillColor=#dc2626;align=center;spacingTop=0;" vertex="1" parent="1">
+          <mxGeometry x="240" y="580" width="320" height="190" as="geometry"/>
+        </mxCell>
+
+        <!-- EMPLOYEE_PROJECT_ASSIGNMENTS -->
+        <mxCell id="epa" value="&lt;div style=&quot;background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%); color: white; font-weight: bold; font-size: 16px; padding: 6px; border-radius: 8px 8px 0 0;&quot;&gt;📝 employee_project_assignments&lt;/div&gt;&lt;div style=&quot;color: white; font-size: 12px; padding: 2px; background: #4b5563;&quot;&gt;Назначения на проекты (29+ записей)&lt;/div&gt;&lt;hr style=&quot;border-color: white; margin: 0;&quot;&gt;&lt;div style=&quot;text-align: left; padding: 10px; font-family: 'Courier New'; background: #374151;&quot;&gt;&lt;div style=&quot;color: #ffd700; font-weight: bold; margin: 3px 0; font-size: 13px;&quot;&gt;🔑 PK assignment_id : SERIAL&lt;/div&gt;&lt;div style=&quot;color: #87ceeb; font-weight: bold; margin: 3px 0;&quot;&gt;🔗 FK employee_id : INTEGER&lt;/div&gt;&lt;div style=&quot;color: #87ceeb; font-weight: bold; margin: 3px 0;&quot;&gt;🔗 FK project_id : INTEGER&lt;/div&gt;&lt;div style=&quot;color: white; margin: 3px 0;&quot;&gt;assigned_from : DATE NOT NULL&lt;/div&gt;&lt;div style=&quot;color: white; margin: 3px 0;&quot;&gt;assigned_to : DATE&lt;/div&gt;&lt;div style=&quot;color: white; margin: 3px 0;&quot;&gt;role : VARCHAR(100)&lt;/div&gt;&lt;div style=&quot;color: white; margin: 3px 0;&quot;&gt;allocation_percent : INTEGER DEFAULT 100&lt;/div&gt;&lt;div style=&quot;color: #ddd; margin: 3px 0; font-size: 11px;&quot;&gt;CHECK (allocation_percent BETWEEN 1 AND 100)&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;whiteSpace=wrap;html=1;shadow=1;strokeColor=#374151;strokeWidth=3;fillColor=#4b5563;align=center;spacingTop=0;" vertex="1" parent="1">
+          <mxGeometry x="620" y="40" width="410" height="220" as="geometry"/>
+        </mxCell>
+
+        <!-- Улучшенные связи с градиентными стрелками -->
+        <!-- employees -> job_titles -->
+        <mxCell id="e1" edge="1" parent="1" source="employees" target="job_titles" style="endArrow=block;endFill=1;strokeColor=#2b6cb0;strokeWidth=4;labelBackgroundColor=white;fontSize=12;fontStyle=1;rounded=1;shadow=1;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1040" y="380"/>
+              <mxPoint x="1040" y="250"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e1_label" value="&lt;div style=&quot;background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); padding: 6px 8px; border: 2px solid #2b6cb0; border-radius: 6px; font-weight: bold; color: #1e40af; box-shadow: 0 2px 4px rgba(0,0,0,0.1);&quot;&gt;M:1&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" parent="1">
+          <mxGeometry x="1020" y="310" width="40" height="25" as="geometry"/>
+        </mxCell>
+
+        <!-- employees -> departments -->
+        <mxCell id="e2" edge="1" parent="1" source="employees" target="departments" style="endArrow=block;endFill=1;strokeColor=#7c3aed;strokeWidth=4;labelBackgroundColor=white;fontSize=12;fontStyle=1;rounded=1;shadow=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2_label" value="&lt;div style=&quot;background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%); padding: 6px 8px; border: 2px solid #7c3aed; border-radius: 6px; font-weight: bold; color: #5b21b6; box-shadow: 0 2px 4px rgba(0,0,0,0.1);&quot;&gt;M:1&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" parent="1">
+          <mxGeometry x="800" y="605" width="40" height="25" as="geometry"/>
+        </mxCell>
+
+        <!-- departments -> department_types -->
+        <mxCell id="e3" edge="1" parent="1" source="departments" target="department_types" style="endArrow=block;endFill=1;strokeColor=#9333ea;strokeWidth=4;labelBackgroundColor=white;fontSize=12;fontStyle=1;rounded=1;shadow=1;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1040" y="720"/>
+              <mxPoint x="1040" y="430"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e3_label" value="&lt;div style=&quot;background: linear-gradient(135deg, #fae8ff 0%, #f3e8ff 100%); padding: 6px 8px; border: 2px solid #9333ea; border-radius: 6px; font-weight: bold; color: #6b21a8; box-shadow: 0 2px 4px rgba(0,0,0,0.1);&quot;&gt;M:1&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" parent="1">
+          <mxGeometry x="1020" y="570" width="40" height="25" as="geometry"/>
+        </mxCell>
+
+        <!-- employees -> branches -->
+        <mxCell id="e4" edge="1" parent="1" source="employees" target="branches" style="endArrow=block;endFill=1;strokeColor=#059669;strokeWidth=4;labelBackgroundColor=white;fontSize=12;fontStyle=1;rounded=1;shadow=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e4_label" value="&lt;div style=&quot;background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); padding: 6px 8px; border: 2px solid #059669; border-radius: 6px; font-weight: bold; color: #047857; box-shadow: 0 2px 4px rgba(0,0,0,0.1);&quot;&gt;M:1&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" parent="1">
+          <mxGeometry x="590" y="425" width="40" height="25" as="geometry"/>
+        </mxCell>
+
+        <!-- salaries -> employees -->
+        <mxCell id="e5" edge="1" parent="1" source="salaries" target="employees" style="endArrow=block;endFill=1;strokeColor=#dc2626;strokeWidth=4;labelBackgroundColor=white;fontSize=12;fontStyle=1;rounded=1;shadow=1;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="580" y="675"/>
+              <mxPoint x="580" y="460"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e5_label" value="&lt;div style=&quot;background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%); padding: 6px 8px; border: 2px solid #dc2626; border-radius: 6px; font-weight: bold; color: #991b1b; box-shadow: 0 2px 4px rgba(0,0,0,0.1);&quot;&gt;M:1&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" parent="1">
+          <mxGeometry x="560" y="565" width="40" height="25" as="geometry"/>
+        </mxCell>
+
+        <!-- epa -> employees -->
+        <mxCell id="e6" edge="1" parent="1" source="epa" target="employees" style="endArrow=block;endFill=1;strokeColor=#4b5563;strokeWidth=4;labelBackgroundColor=white;fontSize=12;fontStyle=1;rounded=1;shadow=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e6_label" value="&lt;div style=&quot;background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%); padding: 6px 8px; border: 2px solid #4b5563; border-radius: 6px; font-weight: bold; color: #374151; box-shadow: 0 2px 4px rgba(0,0,0,0.1);&quot;&gt;M:1&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" parent="1">
+          <mxGeometry x="800" y="295" width="40" height="25" as="geometry"/>
+        </mxCell>
+
+        <!-- epa -> projects -->
+        <mxCell id="e7" edge="1" parent="1" source="epa" target="projects" style="endArrow=block;endFill=1;strokeColor=#d97706;strokeWidth=4;labelBackgroundColor=white;fontSize=12;fontStyle=1;rounded=1;shadow=1;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1060" y="150"/>
+              <mxPoint x="1060" y="640"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e7_label" value="&lt;div style=&quot;background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); padding: 6px 8px; border: 2px solid #d97706; border-radius: 6px; font-weight: bold; color: #92400e; box-shadow: 0 2px 4px rgba(0,0,0,0.1);&quot;&gt;M:1&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" parent="1">
+          <mxGeometry x="1040" y="395" width="40" height="25" as="geometry"/>
+        </mxCell>
+
+        <!-- Заголовок с улучшенным дизайном -->
+        <mxCell id="title" value="&lt;div style=&quot;background: linear-gradient(135deg, #1e40af 0%, #3730a3 100%); color: white; font-size: 28px; font-weight: bold; text-align: center; padding: 15px; border-radius: 12px; box-shadow: 0 8px 16px rgba(0,0,0,0.2); margin: 10px;&quot;&gt;🏢 База данных учета сотрудников&lt;/div&gt;&lt;div style=&quot;font-size: 16px; color: #4b5563; text-align: center; margin-top: 8px; font-weight: 500;&quot;&gt;Entity-Relationship Diagram (ERD)&lt;/div&gt;&lt;div style=&quot;font-size: 14px; color: #6b7280; text-align: center; margin-top: 4px;&quot;&gt;📊 Основано на реальных данных: 29 сотрудников, 28 проектов, 15 должностей&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" parent="1">
+          <mxGeometry x="520" y="820" width="600" height="100" as="geometry"/>
+        </mxCell>
+
+        <!-- Дополнительные индексы и ограничения (комментарий) -->
+        <mxCell id="constraints" value="&lt;div style=&quot;background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 8px; padding: 12px; font-size: 12px; color: #475569;&quot;&gt;&lt;b&gt;🔧 Дополнительные ограничения:&lt;/b&gt;&lt;br/&gt;• UNIQUE INDEX на (employee_id, project_id) в assignments&lt;br/&gt;• CHECK constraint на allocation_percent (1-100)&lt;br/&gt;• INDEX на hire_date для быстрого поиска по датам&lt;br/&gt;• FOREIGN KEY ON DELETE RESTRICT для всех связей&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;resizable=0;points=[];" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="320" height="120" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
